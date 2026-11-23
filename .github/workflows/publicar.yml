@@ -1,0 +1,36 @@
+# Publica uma versão: os instaladores chegam num ramo "arquivos/<tag>" e este
+# workflow cria a release <tag> com eles e apaga o ramo depois.
+name: Publicar versão
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag da versão (ex.: build-1)"
+        required: true
+      titulo:
+        description: "Título da versão"
+        required: true
+permissions:
+  contents: write
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      TAG: ${{ inputs.tag }}
+      TITULO: ${{ inputs.titulo }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: arquivos/${{ inputs.tag }}
+      - name: Criar ou atualizar a release
+        run: |
+          set -euo pipefail
+          cd versao
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" nogixremote-* SHA256SUMS.txt --clobber
+          else
+            gh release create "$TAG" --target main --title "$TITULO" --notes-file NOTAS.md nogixremote-* SHA256SUMS.txt
+          fi
+      - name: Apagar o ramo de arquivos
+        run: git push origin --delete "arquivos/$TAG"
