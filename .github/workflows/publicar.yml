@@ -10,6 +10,10 @@ on:
       titulo:
         description: "Título da versão"
         required: true
+      remover:
+        description: "Arquivos a retirar da versão, separados por espaço (opcional)"
+        required: false
+        default: ""
 permissions:
   contents: write
 jobs:
@@ -19,6 +23,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       TAG: ${{ inputs.tag }}
       TITULO: ${{ inputs.titulo }}
+      REMOVER: ${{ inputs.remover }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -32,5 +37,11 @@ jobs:
           else
             gh release create "$TAG" --target main --title "$TITULO" --notes-file NOTAS.md nogixremote-* SHA256SUMS.txt
           fi
+      - name: Retirar arquivos substituídos
+        if: inputs.remover != ''
+        run: |
+          for nome in $REMOVER; do
+            gh release delete-asset "$TAG" "$nome" -y || true
+          done
       - name: Apagar o ramo de arquivos
         run: git push origin --delete "arquivos/$TAG"

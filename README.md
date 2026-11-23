@@ -6,14 +6,14 @@ Acesso remoto ao computador, com servidor próprio. Baixe a versão mais recente
 |---|---|
 | Windows (instalador) | `nogixremote-<versão>-x86_64.msi` |
 | Windows (portátil) | `nogixremote-<versão>-x86_64.exe` |
-| macOS Apple Silicon (M1 em diante) | `nogixremote-<versão>-aarch64.dmg` |
+| macOS Apple Silicon (M1 em diante) | `nogixremote-<versão>-aarch64-mac.zip` ou `-aarch64.dmg` |
 | macOS Intel | `nogixremote-<versão>-x86_64.dmg` |
 | Linux Debian/Ubuntu | `nogixremote-<versão>-x86_64.deb` |
 | Linux Fedora/openSUSE | `nogixremote-<versão>-x86_64.rpm` / `-suse.rpm` |
 
 Os instaladores ainda não têm assinatura digital.
 - **Windows:** se aparecer "O Windows protegeu o computador", clique em **Mais informações → Executar assim mesmo**.
-- **macOS:** clique com o botão direito no app e escolha **Abrir**.
+- **macOS:** arraste o **NogixRemote** para a pasta Aplicativos e abra. Quando aparecer o aviso de que a Apple não pôde verificar o app, abra **Ajustes do Sistema → Privacidade e Segurança**, desça até a mensagem sobre o NogixRemote e clique em **Abrir Mesmo Assim**. Depois, permita **Gravação de Tela** e **Acessibilidade** quando o app pedir.
 
 Instale a mesma versão nos dois computadores: os dois precisam usar o servidor do Nogix Remote para se encontrar.
 
