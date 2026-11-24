@@ -15,6 +15,14 @@ Os instaladores ainda não têm assinatura digital.
 - **Windows:** se aparecer "O Windows protegeu o computador", clique em **Mais informações → Executar assim mesmo**.
 - **macOS:** abra o .zip (vira o app NogixRemote), arraste o **NogixRemote** para a pasta Aplicativos e abra. Quando aparecer o aviso de que a Apple não pôde verificar o app, abra **Ajustes do Sistema → Privacidade e Segurança**, desça até a mensagem sobre o NogixRemote e clique em **Abrir Mesmo Assim**. Depois, permita **Gravação de Tela** e **Acessibilidade** quando o app pedir.
 
+- **macOS, se aparecer "danificado" (recomendado):** cole este comando no Terminal. Ele baixa direto, sem a marca de quarentena que o macOS bloqueia, instala em Aplicativos e abre o app (Apple Silicon):
+
+  ```
+  curl -L -o /tmp/nogix.zip https://github.com/armbarros2023/nogix-remote-releases/releases/latest/download/nogixremote-1.5.3-aarch64-mac.zip && ditto -x -k /tmp/nogix.zip /Applications && xattr -cr /Applications/NogixRemote.app && open /Applications/NogixRemote.app
+  ```
+
+  Para Mac Intel, troque `aarch64` por `x86_64`.
+
 Instale a mesma versão nos dois computadores: os dois precisam usar o servidor do Nogix Remote para se encontrar.
 
 ## Licença e código-fonte
