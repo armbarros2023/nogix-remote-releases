@@ -18,7 +18,7 @@ Os instaladores ainda não têm assinatura digital.
 - **macOS, se aparecer "danificado" (recomendado):** cole este comando no Terminal. Ele baixa direto, sem a marca de quarentena que o macOS bloqueia, instala em Aplicativos e abre o app (Apple Silicon):
 
   ```
-  curl -L -o /tmp/nogix.zip https://github.com/armbarros2023/nogix-remote-releases/releases/latest/download/nogixremote-1.5.3-aarch64-mac.zip && ditto -x -k /tmp/nogix.zip /Applications && xattr -cr /Applications/NogixRemote.app && open /Applications/NogixRemote.app
+  curl -L -o /tmp/nogix.zip https://github.com/armbarros2023/nogix-remote-releases/releases/latest/download/nogixremote-1.5.4-aarch64-mac.zip && ditto -x -k /tmp/nogix.zip /Applications && xattr -cr /Applications/NogixRemote.app && open /Applications/NogixRemote.app
   ```
 
   Para Mac Intel, troque `aarch64` por `x86_64`.
